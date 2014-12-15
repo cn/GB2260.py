@@ -3,9 +3,9 @@
 from setuptools import setup
 
 
-def fread(filepath):
+def fread(filepath, skip_lines=0):
     with open(filepath, 'r') as f:
-        return f.read()
+        return ''.join(f.readlines()[skip_lines:])
 
 
 setup(
@@ -17,7 +17,7 @@ setup(
     packages=['gb2260'],
     description='The Python implementation for looking up the Chinese '
                 'administrative divisions.',
-    long_description=fread('README.rst'),
+    long_description=fread('README.rst', skip_lines=2),
     license='BSD',
     include_package_data=True,
     classifiers=[

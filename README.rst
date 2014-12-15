@@ -1,3 +1,5 @@
+|Build Status| |Coverage Status| |PyPI Version| |Wheel Status|
+
 GB2260
 ======
 
@@ -72,3 +74,16 @@ External Links
 
 - `GB/T 2260-2002 in Wikipedia <https://zh.wikipedia.org/zh-cn/GB/T_2260-2002>`_
 - `Codes for administrative divisions of PRC <http://www.stats.gov.cn/tjsj/tjbz/xzqhdm/201401/t20140116_501070.html>`_
+
+.. |Build Status| image:: https://img.shields.io/travis/cn/GB2260-python.svg?style=flat
+   :target: https://travis-ci.org/cn/GB2260-python
+   :alt: Build Status
+.. |Coverage Status| image:: https://img.shields.io/coveralls/cn/GB2260-python.svg?style=flat
+   :target: https://coveralls.io/r/cn/GB2260-python
+   :alt: Coverage Status
+.. |Wheel Status| image:: https://pypip.in/wheel/GB2260/badge.svg?style=flat
+   :target: https://warehouse.python.org/project/GB2260
+   :alt: Wheel Status
+.. |PyPI Version| image:: https://img.shields.io/pypi/v/GB2260.svg?style=flat
+   :target: https://pypi.python.org/pypi/GB2260
+   :alt: PyPI Version
