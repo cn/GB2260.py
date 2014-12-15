@@ -19,6 +19,12 @@ def get_name_suffix(path):
     return ''
 
 
+def ensure_unicode(text):
+    if isinstance(text, bytes):
+        return text.decode('utf-8')
+    return text
+
+
 def main():
     if len(sys.argv) < 3:
         print('Usage: {.argv[0]} [A] [B] ... [DESTINATION]'.format(sys),
@@ -35,7 +41,7 @@ def main():
         with open(current_source, 'r') as source_file:
             for line in source_file:
                 code, name = line.strip().split()
-                current_dict[int(code)] = name.decode('utf-8')
+                current_dict[int(code)] = ensure_unicode(name)
 
     result = 'data = {0}'.format(repr(data))
     with open(destination, 'w') as destination_file:
