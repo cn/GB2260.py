@@ -7,7 +7,7 @@ python:
   - "pypy"
 install:
   - "pip install pytest pytest-cov pytest-pep8 coveralls"
-script: "make test"
+script: "make clean test"
 after_success: "coveralls"
 branches:
   only:
