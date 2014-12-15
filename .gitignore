@@ -1,9 +1,11 @@
 *.pyc
 *.pyo
 *.egg-info
-data.py
 __pycache__
 
+/.cache
 /.tox
+/.coverage
 /build
 /dist
+/gb2260/data.py

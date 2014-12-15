@@ -1,11 +1,15 @@
 PYTHON := python
+TOX := tox
 
-.PHONY: all build clean
+.PHONY: all build test clean
 
 all: build
 
 build: gb2260/data.py
 	$(PYTHON) setup.py sdist bdist_wheel
+
+test: gb2260/data.py
+	$(TOX)
 
 clean:
 	rm -rf dist build gb2260/data.py
