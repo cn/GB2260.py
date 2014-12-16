@@ -78,11 +78,11 @@ External Links
 .. |GB/T 2260| image:: http://img.shields.io/badge/GB%2FT-2260-blue.svg?style=flat
    :target: https://github.com/cn/GB2260
    :alt: GB/T 2260
-.. |Build Status| image:: https://img.shields.io/travis/cn/GB2260-python.svg?style=flat
-   :target: https://travis-ci.org/cn/GB2260-python
+.. |Build Status| image:: https://img.shields.io/travis/cn/GB2260.py.svg?style=flat
+   :target: https://travis-ci.org/cn/GB2260.py
    :alt: Build Status
-.. |Coverage Status| image:: https://img.shields.io/coveralls/cn/GB2260-python.svg?style=flat
-   :target: https://coveralls.io/r/cn/GB2260-python
+.. |Coverage Status| image:: https://img.shields.io/coveralls/cn/GB2260.py.svg?style=flat
+   :target: https://coveralls.io/r/cn/GB2260.py
    :alt: Coverage Status
 .. |Wheel Status| image:: https://pypip.in/wheel/GB2260/badge.svg?style=flat
    :target: https://warehouse.python.org/project/GB2260

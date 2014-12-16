@@ -13,7 +13,7 @@ setup(
     version='0.2.0',
     author='Jiangge Zhang',
     author_email='tonyseek@gmail.com',
-    url='https://github.com/cn/GB2260',
+    url='https://github.com/cn/GB2260.py',
     packages=['gb2260'],
     description='The Python implementation for looking up the Chinese '
                 'administrative divisions.',
