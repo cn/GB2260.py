@@ -61,6 +61,21 @@ class Division(object):
 
         raise ValueError('%r is not valid division code' % code)
 
+    @classmethod
+    def search(cls, code):
+        """Searches administrative division by its code in all revision.
+
+        :param code: The division code.
+        :returns: A :class:`gb2260.Division` object or ``None``.
+        """
+        # sorts from latest to oldest, and ``None`` means latest
+        pairs = sorted(
+            data.items(), reverse=True,
+            key=lambda pair: pair[0] if pair[0] else 0xFFFF)
+        for year, store in pairs:
+            if code in store:
+                return cls.get(code, year=year)
+
     @property
     def province(self):
         return self.get(self.code[:2] + '0000', self.year)

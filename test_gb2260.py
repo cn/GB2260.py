@@ -51,3 +51,13 @@ def test_history_data():
     with raises(ValueError) as error:
         get(110101, 2000)
     assert error.value.args[0].startswith('year must be in')
+
+
+@mark.parametrize('code,name,year', [
+    (522401, u'毕节市', 2010),
+    (419000, u'省直辖县级行政区划', None),
+])
+def test_searching(code, name, year):
+    division = Division.search(code)
+    assert division.name == name
+    assert division.year == year
