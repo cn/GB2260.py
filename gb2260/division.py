@@ -8,7 +8,7 @@ from ._compat import unicode_compatible, unicode_type
 
 @unicode_compatible
 class Division(object):
-    """The administrative divison."""
+    """The administrative division."""
 
     _identity_map = dict(
         (year, weakref.WeakValueDictionary()) for year in data)
@@ -39,6 +39,12 @@ class Division(object):
 
     @classmethod
     def get(cls, code, year=None):
+        """Gets an administrative division by its code.
+
+        :param code: The division code.
+        :param year: The year of revision.
+        :returns: A :class:`gb2260.Division` object.
+        """
         key = int(code)
         if year and year not in data:
             raise ValueError('year must be in %r' % list(data))
