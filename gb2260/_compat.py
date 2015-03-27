@@ -8,7 +8,7 @@ PY2 = sys.version_info[0] == 2
 
 
 def unicode_compatible(cls):
-    if PY2:
+    if PY2:  # pragma: no cover
         __str__ = getattr(cls, '__str__', None)
         __repr__ = getattr(cls, '__repr__', None)
         if __str__ is not None:
@@ -19,9 +19,9 @@ def unicode_compatible(cls):
     return cls
 
 
-if PY2:
+if PY2:  # pragma: no cover
     unicode_type = unicode
     maxsize = sys.maxint
-else:
+else:  # pragma: no cover
     unicode_type = str
     maxsize = sys.maxsize

@@ -8,4 +8,5 @@ __pycache__
 /.coverage
 /build
 /dist
+/htmlcov
 /gb2260/data.py

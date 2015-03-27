@@ -2,6 +2,8 @@
 
 from __future__ import unicode_literals
 
+import sys
+
 from pytest import mark, raises
 
 from gb2260 import Division, get
@@ -19,6 +21,46 @@ def test_division(code, stack_name, is_province, is_prefecture, is_county):
     assert division.is_prefecture == is_prefecture
     assert division.is_county == is_county
     assert '/'.join(x.name for x in division.stack()) == stack_name
+
+
+@mark.skipif(sys.version_info[0] != 2, reason='requires python 2.x')
+@mark.parametrize('code,year,repr_result,unicode_result', [
+    ('110101', None,
+     "gb2260.get(u'110101')", u'<GB2260 110101 北京市/市辖区/东城区>'),
+    ('110100', None,
+     "gb2260.get(u'110100')", u'<GB2260 110100 北京市/市辖区>'),
+    ('110000', None,
+     "gb2260.get(u'110000')", u'<GB2260 110000 北京市>'),
+    ('110000', 2006,
+     "gb2260.get(u'110000', 2006)", u'<GB2260-2006 110000 北京市>'),
+])
+def test_representation_python2(code, year, repr_result, unicode_result):
+    division = get(code, year)
+    assert repr(division) == repr_result
+    assert str(division) == unicode_result.encode('utf-8')
+    assert unicode(division) == unicode_result
+    assert isinstance(repr(division), str)
+    assert isinstance(str(division), str)
+    assert isinstance(unicode(division), unicode)
+
+
+@mark.skipif(sys.version_info[0] != 3, reason='requires python 3.x')
+@mark.parametrize('code,year,repr_result,unicode_result', [
+    ('110101', None,
+     u"gb2260.get('110101')", u'<GB2260 110101 北京市/市辖区/东城区>'),
+    ('110100', None,
+     u"gb2260.get('110100')", u'<GB2260 110100 北京市/市辖区>'),
+    ('110000', None,
+     u"gb2260.get('110000')", u'<GB2260 110000 北京市>'),
+    ('110000', 2006,
+     u"gb2260.get('110000', 2006)", u'<GB2260-2006 110000 北京市>'),
+])
+def test_representation_python3(code, year, repr_result, unicode_result):
+    division = get(code, year)
+    assert repr(division) == repr_result
+    assert str(division) == unicode_result
+    assert isinstance(repr(division), str)
+    assert isinstance(str(division), str)
 
 
 def test_comparable():
