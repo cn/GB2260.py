@@ -21,5 +21,7 @@ def unicode_compatible(cls):
 
 if PY2:
     unicode_type = unicode
+    maxsize = sys.maxint
 else:
     unicode_type = str
+    maxsize = sys.maxsize
