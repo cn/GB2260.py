@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import weakref
 
 from .data import data
-from ._compat import unicode_compatible, unicode_type
+from ._compat import unicode_compatible, unicode_type, maxsize
 
 
 @unicode_compatible
@@ -60,6 +60,21 @@ class Division(object):
             return instance
 
         raise ValueError('%r is not valid division code' % code)
+
+    @classmethod
+    def search(cls, code):
+        """Searches administrative division by its code in all revision.
+
+        :param code: The division code.
+        :returns: A :class:`gb2260.Division` object or ``None``.
+        """
+        # sorts from latest to oldest, and ``None`` means latest
+        pairs = sorted(
+            data.items(), reverse=True,
+            key=lambda pair: pair[0] if pair[0] else maxsize)
+        for year, store in pairs:
+            if code in store:
+                return cls.get(code, year=year)
 
     @property
     def province(self):
