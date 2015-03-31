@@ -69,12 +69,13 @@ class Division(object):
         :returns: A :class:`gb2260.Division` object or ``None``.
         """
         # sorts from latest to oldest, and ``None`` means latest
+        key = int(code)
         pairs = sorted(
             data.items(), reverse=True,
             key=lambda pair: pair[0] if pair[0] else maxsize)
         for year, store in pairs:
-            if code in store:
-                return cls.get(code, year=year)
+            if key in store:
+                return cls.get(key, year=year)
 
     @property
     def province(self):
