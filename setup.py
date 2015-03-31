@@ -10,7 +10,7 @@ def fread(filepath, skip_lines=0):
 
 setup(
     name='GB2260',
-    version='0.3.0',
+    version='0.3.1',
     author='Jiangge Zhang',
     author_email='tonyseek@gmail.com',
     url='https://github.com/cn/GB2260.py',
