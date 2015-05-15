@@ -3,7 +3,10 @@ from __future__ import unicode_literals
 import weakref
 
 from .data import data
-from ._compat import unicode_compatible, unicode_type, maxsize
+from ._compat import unicode_compatible, unicode_type
+
+
+LATEST_YEAR = 2014
 
 
 @unicode_compatible
@@ -72,7 +75,7 @@ class Division(object):
         key = int(code)
         pairs = sorted(
             data.items(), reverse=True,
-            key=lambda pair: pair[0] if pair[0] else maxsize)
+            key=lambda pair: make_year_key(pair[0]))
         for year, store in pairs:
             if key in store:
                 return cls.get(key, year=year)
@@ -111,3 +114,15 @@ class Division(object):
             yield self.prefecture
         if self.is_county:
             yield self
+
+
+def make_year_key(year):
+    """A key generator for sorting years."""
+    if year is None:
+        return (LATEST_YEAR, 12)
+    year = str(year)
+    if len(year) == 4:
+        return (int(year), 12)
+    if len(year) == 6:
+        return (int(year[:4]), int(year[4:]))
+    raise ValueError('invalid year %s' % year)

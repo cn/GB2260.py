@@ -21,7 +21,5 @@ def unicode_compatible(cls):
 
 if PY2:  # pragma: no cover
     unicode_type = unicode
-    maxsize = sys.maxint
 else:  # pragma: no cover
     unicode_type = str
-    maxsize = sys.maxsize

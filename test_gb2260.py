@@ -7,6 +7,7 @@ import sys
 from pytest import mark, raises
 
 from gb2260 import Division, get
+from gb2260.division import make_year_key
 
 
 @mark.parametrize('code,stack_name,is_province,is_prefecture,is_county', [
@@ -103,3 +104,21 @@ def test_searching(code, name, year):
     division = Division.search(code)
     assert division.name == name
     assert division.year == year
+
+
+@mark.parametrize('year,result', [
+    (2013, (2013, 12)),
+    (201304, (2013, 4)),
+    ('2013', (2013, 12)),
+    ('201304', (2013, 4)),
+    (None, (2014, 12)),
+])
+def test_make_year_key(year, result):
+    assert make_year_key(year) == result
+
+
+def test_make_invalid_year_key():
+    raises(ValueError, make_year_key, 20)
+    raises(ValueError, make_year_key, '20')
+    raises(ValueError, make_year_key, 20122222)
+    raises(ValueError, make_year_key, '20122222')
