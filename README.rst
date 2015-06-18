@@ -84,7 +84,7 @@ External Links
 .. |Coverage Status| image:: https://img.shields.io/coveralls/cn/GB2260.py.svg?style=flat
    :target: https://coveralls.io/r/cn/GB2260.py
    :alt: Coverage Status
-.. |Wheel Status| image:: https://pypip.in/wheel/GB2260/badge.svg?style=flat
+.. |Wheel Status| image:: https://img.shields.io/pypi/wheel/GB2260.svg?style=flat
    :target: https://warehouse.python.org/project/GB2260
    :alt: Wheel Status
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/GB2260.svg?style=flat
