@@ -96,6 +96,10 @@ def test_history_data():
     assert error.value.args[0].startswith('year must be in')
 
 
+def test_default_get():
+    assert get(522401, raise_on_error=False) is None
+
+
 @mark.parametrize('code,name,year', [
     (522401, u'毕节市', 2010),
     (419000, u'省直辖县级行政区划', None),

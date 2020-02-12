@@ -41,7 +41,7 @@ class Division(object):
         return self.code == other.code and self.year == other.year
 
     @classmethod
-    def get(cls, code, year=None):
+    def get(cls, code, year=None, raise_on_error=True):
         """Gets an administrative division by its code.
 
         :param code: The division code.
@@ -64,6 +64,9 @@ class Division(object):
             instance = cls(code, store[key], year)
             cache[key] = instance
             return instance
+
+        if not raise_on_error:
+            return None
 
         raise ValueError('%r is not valid division code' % code)
 
