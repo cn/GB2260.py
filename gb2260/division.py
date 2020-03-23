@@ -55,8 +55,11 @@ class Division(object):
         cache = cls._identity_map[year]
         store = data[year]
 
-        if key in cache:
+        try:
             return cache[key]
+        except KeyError:
+            pass
+
         if key in store:
             instance = cls(code, store[key], year)
             cache[key] = instance
